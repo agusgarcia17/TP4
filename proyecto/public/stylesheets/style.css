@@ -1,0 +1,60 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: Signika, 'sans-serif';
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#mainContainer{
+  margin: 0, auto;
+  padding: 10px;
+  font-size: 1.2em;
+  background-color: #29b6f6;
+  border-radius: 10px;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+#pais{
+  width: 200px;
+  margin: 5px;
+}
+
+#btn{
+  width: 100px;
+}
+
+#comboBox {
+  text-align: center;
+}
+
+#form{
+  display: flex;
+  justify-content: center;
+}
+
+h1{
+  color: #790e8b;
+  text-align: center;
+}
+
+li {
+  margin: 10px;
+}
+
+#flex{
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+
+

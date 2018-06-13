@@ -1,60 +1,104 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  font-family: Signika, 'sans-serif';
-  display: flex;
-  justify-content: center;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-family: Signika, 'sans-serif';
+    display: flex;
+    justify-content: center;
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
 }
 
-#mainContainer{
-  margin: 0, auto;
-  padding: 10px;
-  font-size: 1.2em;
-  background-color: #29b6f6;
-  border-radius: 10px;
-  width: 70%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+#mainContainer {
+    margin: 0, auto;
+    padding: 10px;
+    font-size: 1.2em;
+    background-color: #29b6f6;
+    border-radius: 10px;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 
-#pais{
-  width: 200px;
-  margin: 5px;
+#pais {
+    width: 200px;
+    margin: 5px;
 }
 
-#btn{
-  width: 100px;
+#btn {
+    width: 100px;
 }
 
 #comboBox {
-  text-align: center;
+    text-align: center;
 }
 
-#form{
-  display: flex;
-  justify-content: center;
+#form {
+    display: flex;
+    justify-content: center;
 }
 
-h1{
-  color: #790e8b;
-  text-align: center;
+h1 {
+    color: #790e8b;
+    text-align: center;
 }
 
 li {
-  margin: 10px;
+    margin: 10px;
 }
 
-#flex{
+#flex {
+    display: flex;
+    justify-content: space-between;
+}
+   border-width: 1px;
+
+table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1vh;
+    margin-bottom: 5vh;
+}
+
+#contenedorTabla{
   display: flex;
-  justify-content: space-between;
-  
+  flex-direction: column;
+  margin:5px;
+}
+th{
+    text-transform: uppercase;
+     justify-content: center;
+    margin: 1px 0 1px 0;
+    padding: .3em;
+    border-radius: .5em;    
+    border-width: 1px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-family: Signika, 'sans-serif';
+    background: blue;
+    background: rgba(0,0,0,.2);
+    box-shadow: 0 1px 0 rgba(255,255,255,.2), 0 2px 1px rgba(0,0,0,.8) inset;
 }
 
-
-
+td{
+    justify-content: center;
+    text-decoration: none;
+    color: blue;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-family: Signika, 'sans-serif';
+    text-transform: uppercase;
+ 
+    border-radius: .5em;    
+    border-width: 1px;
+    
+    background: lightblue;
+    background: linear-gradient(white, #c1c1c1);            
+    
+    border-style: solid;
+    border-color: blue #ccc #999 #eee;
+ }
+ 

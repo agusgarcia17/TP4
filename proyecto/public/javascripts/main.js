@@ -34,7 +34,7 @@ $('#btn').on('click', function() {
     console.log(respuesta4)
 
     //controla que complete todo lo requerido en el form
-    if(select!='' && respuesta1!='' && respuesta2!='' && respuesta3!='' && respuesta4!=''){
+    if(select!='' && respuesta1!=undefined && respuesta2!=undefined && respuesta3!=undefined && respuesta4!=undefined){
       
       guardoInfoEnArray(select,respuesta1,respuesta2,respuesta3,respuesta4);
       $("input:checked[type='radio']").prop( "checked", false );//resetea los input type='radio' 
@@ -77,7 +77,7 @@ function guardoInfoEnArray(select,respuesta1,respuesta2,respuesta3,respuesta4){
                                 <th>Browser</th>
                                 <th>Editor</th>
                             </tr>`);
-    
+
 
 function detallarResultados(resultados) {    
 

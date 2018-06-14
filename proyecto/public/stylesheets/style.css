@@ -32,6 +32,10 @@ a {
     width: 100px;
 }
 
+#mjeError{
+    height: 1.5em;
+}
+
 #comboBox {
     text-align: center;
 }

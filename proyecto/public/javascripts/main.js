@@ -32,7 +32,20 @@ $('#btn').on('click', function() {
     console.log(respuesta3)
     var respuesta4 = $("input:checked[type='radio'][name='3']").val()
     console.log(respuesta4)
-    guardoInfoEnArray(select,respuesta1,respuesta2,respuesta3,respuesta4);
+
+    //controla que complete todo lo requerido en el form
+    if(select!='' && respuesta1!='' && respuesta2!='' && respuesta3!='' && respuesta4!=''){
+      
+      guardoInfoEnArray(select,respuesta1,respuesta2,respuesta3,respuesta4);
+      $("input:checked[type='radio']").prop( "checked", false );//resetea los input type='radio' 
+      $("#pais").val("");//resetea valor selec de paises
+      $('#mjeError').html('')//borra mensaje de error
+       
+    }
+    else{
+      $('#mjeError').html('Debes contestar todas las preguntas y seleccionar Pais').css('color','red');
+    }
+
 
 })
 
@@ -55,10 +68,7 @@ function guardoInfoEnArray(select,respuesta1,respuesta2,respuesta3,respuesta4){
   detallarResultados(resultados);
 }
 
-function detallarResultados(resultados) {
-
-
-    /*creo tabla y la lleno*/
+/*creo tabla y la lleno*/
     /*Resultados Parciales*/
     $('#resultadosParciales').append(`<tr>
                                 <th>Residencia</th>
@@ -67,6 +77,9 @@ function detallarResultados(resultados) {
                                 <th>Browser</th>
                                 <th>Editor</th>
                             </tr>`);
+    
+
+function detallarResultados(resultados) {    
 
    /*Despliego Ranking por Array Historico*/
    console.log("resultados"+JSON.stringify(resultados));

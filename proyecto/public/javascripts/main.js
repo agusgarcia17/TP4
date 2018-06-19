@@ -1,3 +1,4 @@
+//se muestran options de select paises
 $.ajax({
     url: "/paises",
     dataType: "json",
@@ -8,7 +9,7 @@ $.ajax({
     })
 })
 
-
+//se muestran preguntas con sus respectivas respuestas
 $.ajax({
     url: "/preguntas",
     dataType: "json",
@@ -19,6 +20,39 @@ $.ajax({
 
     })
 })
+
+//función para dibujar cabecera de la tabla
+function dibujarCabeceraTabla(){
+  $('#resultadosParciales').append(`<tr>
+                                <th>Residencia</th>
+                                <th>Lenguaje</th>
+                                <th>Sistema</th>
+                                <th>Browser</th>
+                                <th>Editor</th>
+                            </tr>`);
+
+}
+
+
+//función para mostrar las preguntas contestadas en sesión anterior
+function mostrarTabla(){
+
+  $.ajax({
+    url: "/respuestas",
+    dataType: "json",
+    }).done(function(data) {
+        data.forEach(function(e, i) {
+        $('#resultadosParciales').append(`<tr>
+                                    <td>${e.pais}</td>
+                                    <td>${e.respuesta1}</td>
+                                    <td>${e.respuesta2}</td>
+                                    <td>${e.respuesta3}</td>
+                                    <td>${e.respuesta3}</td>
+                                </tr>`)
+      });
+});
+}
+
 
 
 $('#btn').on('click', function() {
@@ -35,8 +69,24 @@ $('#btn').on('click', function() {
 
     //controla que complete todo lo requerido en el form
     if(select!='' && respuesta1!=undefined && respuesta2!=undefined && respuesta3!=undefined && respuesta4!=undefined){
-      
-      guardoInfoEnArray(select,respuesta1,respuesta2,respuesta3,respuesta4);
+      $('#resultadosParciales').append(`<tr>
+                                    <td>${select}</td>
+                                    <td>${respuesta1}</td>
+                                    <td>${respuesta2}</td>
+                                    <td>${respuesta3}</td>
+                                    <td>${respuesta3}</td>
+                                </tr>`);
+
+      //se hace un post para guardar la nueva respuesta en mi api
+      $.ajax({
+          type:"POST",
+          url: "/respuestas",
+          data: {pais:select, respuesta1:respuesta1,respuesta2:respuesta2,respuesta3:respuesta3,respuesta4:respuesta4}
+      }).done(function() {
+          
+        })
+
+      //reset form
       $("input:checked[type='radio']").prop( "checked", false );//resetea los input type='radio' 
       $("#pais").val("");//resetea valor selec de paises
       $('#mjeError').html('')//borra mensaje de error
@@ -44,53 +94,10 @@ $('#btn').on('click', function() {
     }
     else{
       $('#mjeError').html('Debes contestar todas las preguntas y seleccionar Pais').css('color','red');
-    }
-
+    }   
 
 })
 
-function guardoInfoEnArray(select,respuesta1,respuesta2,respuesta3,respuesta4){
-  let resultados= [];
-  let respuesta={
-    "residencia": "",
-    "lenguaje": "",
-    "sistema": "",
-    "browser":"",
-    "editor":""
-  }
-  respuesta.residencia = select;
-  respuesta.lenguaje = respuesta1;
-  respuesta.sistema = respuesta2;
-  respuesta.browser = respuesta3;
-  respuesta.editor = respuesta4;
-
-  resultados.push(respuesta);
-  detallarResultados(resultados);
-}
-
-/*creo tabla y la lleno*/
-    /*Resultados Parciales*/
-    $('#resultadosParciales').append(`<tr>
-                                <th>Residencia</th>
-                                <th>Lenguaje</th>
-                                <th>Sistema</th>
-                                <th>Browser</th>
-                                <th>Editor</th>
-                            </tr>`);
-
-
-function detallarResultados(resultados) {    
-
-   /*Despliego Ranking por Array Historico*/
-   console.log("resultados"+JSON.stringify(resultados));
-
-  for (var i = resultados.length - 1; i >= 0; i--) {
-        $('#resultadosParciales').append(`<tr>
-                                    <td>${resultados[i].residencia}</td>
-                                    <td>${resultados[i].lenguaje}</td>
-                                    <td>${resultados[i].sistema}</td>
-                                    <td>${resultados[i].browser}</td>
-                                    <td>${resultados[i].editor}</td>
-                                </tr>`)    }
-  
-}
+//llamadas a funciones para dibujar la tabla
+dibujarCabeceraTabla();
+mostrarTabla();

@@ -69,13 +69,6 @@ $('#btn').on('click', function() {
 
     //controla que complete todo lo requerido en el form
     if(select!='' && respuesta1!=undefined && respuesta2!=undefined && respuesta3!=undefined && respuesta4!=undefined){
-      $('#resultadosParciales').append(`<tr>
-                                    <td>${select}</td>
-                                    <td>${respuesta1}</td>
-                                    <td>${respuesta2}</td>
-                                    <td>${respuesta3}</td>
-                                    <td>${respuesta3}</td>
-                                </tr>`);
 
       //se hace un post para guardar la nueva respuesta en mi api
       $.ajax({
@@ -83,6 +76,14 @@ $('#btn').on('click', function() {
           url: "/respuestas",
           data: {pais:select, respuesta1:respuesta1,respuesta2:respuesta2,respuesta3:respuesta3,respuesta4:respuesta4}
       }).done(function() {
+
+      $('#resultadosParciales').append(`<tr>
+                                    <td>${select}</td>
+                                    <td>${respuesta1}</td>
+                                    <td>${respuesta2}</td>
+                                    <td>${respuesta3}</td>
+                                    <td>${respuesta3}</td>
+                                </tr>`);
           
         })
 

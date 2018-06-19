@@ -5,7 +5,7 @@ var respuestas = []
 
 router.get('/', function(req, res, next) {
     console.log(JSON.stringify(respuestas))
-    res.send(JSON.stringify(respuestas));
+    res.json(respuestas);
   });
 
 
